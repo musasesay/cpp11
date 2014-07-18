@@ -13,6 +13,13 @@ category_list:
 
 sections: 44
 
+defaults:
+  - scope:
+        path: ""
+        type: post
+    values:
+        layout: post
+
 baseurl: /cpp11
 markdown: redcarpet
 redcarpet:
