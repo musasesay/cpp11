@@ -1,4 +1,1 @@
-cpp4e
-=====
-
-The C++ Programming Language - 4th Edition
+Documentation on [GitHub Pages](http://ksamdev.github.io/cpp11/)
