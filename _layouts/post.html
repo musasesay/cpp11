@@ -10,7 +10,7 @@ layout: default
     {% endfor %}
 </h3>
 
-{% if page.tags | size > 0 %}
+{% unless page.tags == empty %}
 <h4>
 {% for tag in page.tags %}
     {{ tag }}
@@ -19,13 +19,13 @@ layout: default
     {% endunless %}
 {% endfor %}
 </h4>
-{% endif %}
+{% endunless %}
 
 <div id="post">
 {{ content }}
 </div>
 
-{% if site.related_posts | size > 0 %}
+{% unless site.related_posts == empty %}
 <div id="related">
     <h4>Related Posts</h4>
     <ul class="posts">
@@ -38,4 +38,4 @@ layout: default
         {% endfor %}
     </ul>
 </div>
-{% endif %}
+{% endunless %}
