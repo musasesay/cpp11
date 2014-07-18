@@ -11,9 +11,9 @@ category_list:
   - name: exercises
     description: exercises for chapters
 
-sections: 4
+sections: 1
 
-baseurl: /pages/ksamdev/cpp11
+baseurl: /cpp11
 markdown: redcarpet
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
