@@ -1,0 +1,22 @@
+encoding: utf-8
+timezone: America/Los_Angeles
+
+author: Samvel Khalatyan
+title: C++11
+description: Notes and Exercises for The C++ Programming Language 4th ed
+
+category_list:
+  - name: notes
+    description: chapter notes
+  - name: exercises
+    description: exercises for chapters
+
+sections: 4
+
+baseurl: /pages/ksamdev/cpp11
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
+
+include: ['_pages']
+relative_permalinks: false

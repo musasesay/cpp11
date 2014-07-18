@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ page.title }}</title>
+
+    <meta name="author" content="{{ site.author }}" />
+    <meta name="description" content="{{ site.description }}" />
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="{{ site.baseurl }}/stylesheets/pygment_trac.css">
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="wrapper">
+    <header>
+        <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+        <p>{{ page.title }}</p>
+        <p class="view"><a href="https://github.com/ksamdev/cpp11">View the Project on GitHub <small>ksamdev/cpp11</small></a></p>
+
+        <ul>
+            <li><a href="https://github.com/ksamdev/cpp11/zipball/master">Download <strong>ZIP File</strong></a></li>
+            <li><a href="https://github.com/ksamdev/cpp11/tarball/master">Download <strong>TAR Ball</strong></a></li>
+            <li><a href="https://github.com/ksamdev/cpp11">View On <strong>GitHub</strong></a></li>
+        </ul>
+
+        {% for category in site.category_list %}
+        <p class="view"><a href='{{ site.baseurl }}/{{ category.name }}'>{{ category.name | capitalize }} <small>{{ category.description | capitalize }}</small></a></p>
+        {% endfor %}
+    </header>
+
+    <section> {{ content }} </section>
+
+    <footer>
+        <p>This project is maintained by <a href="https://github.com/ksamdev">ksamdev</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </footer>
+</div>
+<script src="{{ site.baseurl }}/javascripts/scale.fix.js"></script>
+
+</body>
+</html>
