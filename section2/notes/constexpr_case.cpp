@@ -1,4 +1,4 @@
-// clang++ -std=c++11 case.cpp -o case
+// clang++ -std=c++11 constexpr_case.cpp -o constexpr_case
 //
 // constexpr can be used in a switch-case construction
 
