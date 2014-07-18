@@ -11,7 +11,7 @@ category_list:
   - name: exercises
     description: exercises for chapters
 
-sections: 1
+sections: 44
 
 baseurl: /cpp11
 markdown: redcarpet
