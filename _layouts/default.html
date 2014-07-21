@@ -34,6 +34,7 @@
         {% for category in site.category_list %}
         <p class="view"><a href='{{ site.baseurl }}/{{ category.name }}'>{{ category.name | capitalize }} <small>{{ category.description | capitalize }}</small></a></p>
         {% endfor %}
+        <p class="view"><a href='{{ site.baseurl }}/tags'>{{ "tags" | capitalize }} <small>{{ "tags list" | capitalize }}</small></a></p>
     </header>
 
     <section> {{ content }} </section>

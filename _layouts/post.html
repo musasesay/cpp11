@@ -13,7 +13,7 @@ layout: default
 {% unless page.tags == empty %}
 <h4>
 {% for tag in page.tags %}
-    {{ tag }}
+<a href="{{ site.baseurl}}/tags/#{{ tag | cgi_escape }}">{{ tag }} <sup>{{ site.tags[tag] | size }}</sup></a>
     {% unless forloop.last %}
         ,
     {% endunless %}
