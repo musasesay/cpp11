@@ -1,7 +1,8 @@
 ---
 title: Introduction to C++11
 categories: notes
-tags: section_1 lvalue rvalue
+section: 1
+tags: lvalue rvalue
 ---
 
 * the fundamental object in C++ has identity: it is located in a specific

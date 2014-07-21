@@ -1,7 +1,8 @@
 ---
 title: Procedural Programming
 categories: notes
-tags: section_2 constexpr range-for-statement immutability
+section: 2
+tags: constexpr range-for-statement immutability
 ---
 
 * `vim` > source | `compile` > object | `link` > executable
