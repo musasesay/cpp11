@@ -32,4 +32,4 @@ The project consists of two sections:
 * [Notes]({{ site.baseurl }}/notes/)
 * [Exercises]({{ site.baseurl }}/exercises/)
 
-Notes and exercise are split into sections.
+Notes and exercise are split into chapters.

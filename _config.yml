@@ -11,7 +11,7 @@ category_list:
   - name: exercises
     description: exercises for chapters
 
-sections: 44
+chapters: 44
 
 defaults:
   - scope:
