@@ -3,7 +3,7 @@ title: Procedural Programming
 categories: notes
 chapter: 2
 layout: post
-tags: constexpr range-for-statement immutability declaration auto nullptr
+tags: constexpr range-for immutability declaration auto nullptr
 ---
 
 * `vim` > source | `compile` > object | `link` > executable
