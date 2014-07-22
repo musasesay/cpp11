@@ -11,7 +11,7 @@ tags: new enum declaration interface definition implementation precondition
   *dynamic memory* or *heap*)
 
 * *built-int* types are fundamental types: `bool`, `char`, `int`, `float`, and
-  `doulbe`
+  `double`
 
 * *user-defined* types are `struct`, `class`, and `enum`
 
@@ -20,10 +20,10 @@ tags: new enum declaration interface definition implementation precondition
 
 ```c++
 // strongly typed enumerations will scope the same name enumerators
-enum class TrafficLight { red, green, blue };
+enum class RGB { red, green, blue };
 enum class Rainbow { red, orange, yellow, green, blue, indigo, violet }
 // you can not mix colors:
-TrafficLight light = TrafficLight::red;
+RGB light = RGB::red;
 light = Rainbow::red;   // error: can not mix
 // not even implicit casts
 int RedLight = Rainbow::green;
@@ -32,10 +32,31 @@ int RedLight = Rainbow::green;
 * plain `enum` puts all enumerators into the same namespace (mixes values) and
   allows for conversions
 
-* `enum class` has only assignment, initialization and comparison defined
+* `enum class` has only initialization, assignment and comparison defined
 
 * it is possible to define operators for `enum class` because it is a
   *user-defined* type
+
+```cpp
+RGB& operator++(RGB& light) {
+    switch(light) {
+        case RGB::red:
+            light = RGB::green;
+            break;
+        case RGB::green:
+            light = RGB::blue;
+            break
+        case RGB::blue:
+            light = RGB::red;
+            break;
+        default:
+            throw runtime_error("unsupported RGB light");
+    }
+    return light;
+}
+RGB light {RGB::green};
+++light;  // make it blue
+```
 
 * always distinguish between the *interface* and
   *implementation*, or *declaration* and *definition*:
