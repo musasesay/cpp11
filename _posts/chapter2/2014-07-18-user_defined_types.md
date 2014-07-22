@@ -4,7 +4,7 @@ categories: notes
 chapter: 2
 layout: post
 tags: new enum declaration interface definition implementation precondition
-      invariant assert constexpr
+      invariant assert constexpr exception static_assert
 ---
 
 * the `new` operator allocates memory from an area called *the free store* (or
