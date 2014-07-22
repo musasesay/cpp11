@@ -12,7 +12,7 @@ layout: default
 
     {% if posts_exist %}
         <h3>Chapter {{ chapter }}</h3>
-        {% for post in site.categories[page.category] %}
+        {% for post in site.categories[page.category] reversed %}
             {% if post.chapter == chapter %}
             <h5>{{ post.date | date_to_string }} &raquo;
                 <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h5>
