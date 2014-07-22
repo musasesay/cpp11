@@ -4,7 +4,8 @@ categories: notes
 layout: post
 chapter: 3
 tags: stack heap inline overload RAII concrete abstract polymorphic override
-      base superclass derived subclass inheritance
+      base superclass derived subclass inheritance heap initializer_list new
+      delete
 ---
 
 * *stack* is a statically allocated memory
@@ -24,7 +25,7 @@ tags: stack heap inline overload RAII concrete abstract polymorphic override
 * define functions that need access to representation as members and all others
   separately from the class definition
 
-* *overloaded* operators are user-defined operators
+* *overloaded* operators are user-defined operators, e.g. `operator+`
 
 * *RAII* - Resource Acquisition Is Initialization - acquire resources in
   constructor and release them in destructor
