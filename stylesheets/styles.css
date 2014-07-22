@@ -32,6 +32,11 @@ h3, h4, h5, h6 {
   color:#494949;
 }
 
+.date {
+    color:#a6a6a6;
+    font-weight:normal;
+}
+
 a {
   color:#39c;
   font-weight:400;

@@ -30,9 +30,9 @@ layout: default
                 {% for category in site.category_list %}
                     {% for post in site.categories[category.name] %}
                         {% if post.chapter == chapter and post.tags contains tag %}
-                        <h5>C{{ chapter }} -
-                            <a href='{{ site.baseurl }}/{{ category.name }}'>{{ category.name | capitalize }}</a> -
-                            {{ post.date | date_to_string }} &raquo;
+                        <h5>C{{ chapter }} &raquo;
+                            <a href='{{ site.baseurl }}/{{ category.name }}'>{{ category.name | capitalize }}</a> &raquo;
+                            <span class='date'>{{ post.date | date_to_string }}</span> &raquo;
                             <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h5>
                         {% endif %}
                     {% endfor %}

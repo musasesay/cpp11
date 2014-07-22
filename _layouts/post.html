@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-<h3>{{ page.date | date_to_string }} &raquo;
+<h3>Chapter {{ page.chapter }} &raquo;
+    <span class='date'>{{ page.date | date_to_string }}</span> &raquo;
     {% for category in  page.categories %}
         <a href="{{ site.baseurl }}/{{ category }}/">{{ category | capitalize }}</a>
         {% unless forloop.last %}
