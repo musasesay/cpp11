@@ -4,7 +4,7 @@ categories: notes
 chapter: 2
 layout: post
 tags: new enum declaration interface definition implementation precondition
-      invariant
+      invariant assert constexpr
 ---
 
 * the `new` operator allocates memory from an area called *the free store* (or
@@ -37,8 +37,8 @@ int RedLight = Rainbow::green;
 * it is possible to define operators for `enum class` because it is a
   *user-defined* type
 
-* always distinguish between the *interface* (*declarations*) and
-  *implementation* (*definition*):
+* always distinguish between the *interface* and
+  *implementation*, or *declaration* and *definition*:
 
 ```c++
 // declaration - interface
@@ -50,9 +50,15 @@ void print(const std::string &) {
 }
 ```
 
-* whenever we define a function, we should consider what its *precondition*s are
+* whenever we define a function, we should consider what its *precondition* is 
   and if feasible test them
 
-* *invariant* is an analogy of function's precondition but for class: it is
+* an *invariant* is an analogy of function's precondition but for a class: it is
   something that is assumed about class; constructor should establish invariant
   while member functions should maintain the invariant
+
+* exceptions report run time errors
+
+* use `static_assert(condition, message)` to check conditions at compile time
+  and report errors through compiler (these are called *assertions* ); condition
+  is any `constexpr`
