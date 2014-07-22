@@ -3,9 +3,29 @@ title: Abstraction Mechanisms
 categories: notes
 layout: post
 chapter: 3
-tags: stack heap inline overload RAII concrete abstract polymorphic override
-      base superclass derived subclass inheritance heap initializer_list new
-      delete
+tags:
+  - stack
+  - heap
+  - inline
+  - overload
+  - RAII
+  - concrete
+  - abstract
+  - polymorphic
+  - override
+  - base
+  - superclass
+  - derived
+  - subclass
+  - inheritance
+  - heap
+  - initializer_list
+  - new
+  - delete
+  - copy
+  - resource handle
+  - copy
+  - move
 ---
 
 * *stack* is a statically allocated memory
@@ -49,3 +69,67 @@ tags: stack heap inline overload RAII concrete abstract polymorphic override
 
 * *implementation iheritance* is when base class provides representation and
   interface which simplifies implementation of derived classes
+
+* default copy is a member wise copy
+
+* *resource handle* is a class that is responsible for an object accessed
+  through a pointer
+
+* there are two copying members: *copy constructor* and *copy assignment*
+
+* move semantic complements copy:
+
+```c++
+class Handler {
+public:
+    Handler(const Handler&);    // copy constructor
+    Handler& operator=(const Handler&);  // copy assignment
+
+    Handler(const Handler&&);   // move constructor
+    Handler& operator=(const Hanlder&&); // move assignment
+};
+```
+
+* compiler chooses move constructor for return values if one exists
+
+* roughly, *rvalue* is a value that you can't assign to while *lvalue* is the
+  opposite: something that can appear on the left-hand side of an assignment
+
+* move operators have non-constant argument because its value is being stolen
+
+* a move operation is applied when rvalue reference is used as an initializer or
+  as the right-hand side of an assignment
+
+* leave a moved-from object in a state that allows destructor and assignment to
+  be run
+
+* in certain cases compiler will not detect move semantic; use `std::move` to
+  force it (`move` returns an rvalue):
+
+```c++
+Handler a;
+Handler b;
+Handler c;
+b = a;              // get a copy
+c = std::move(a);   // get a move
+```
+
+* complete control of the lifetime of a resource is handled by *constructor*,
+  *destructor*, *copy*, and *move* operations
+
+* copy and move operations are not virtual and therefore may lead to wrong copy
+  in class hierarchies: use `clone` method and disable above operations by
+  deleting them from the base class:
+
+```c++
+class Base {
+public:
+    Base(const Base&) =delete;  // no copy
+    Base& operator=(const Base&) =delete;
+
+    Base(Base&&) =delete;  // no move
+    Base& operator=(Base&&) =delete;
+};
+```
+
+* move operations are automatically generated unless there is a destructor
