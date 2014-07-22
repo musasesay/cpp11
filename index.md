@@ -3,6 +3,10 @@ title: Welcome
 layout: default
 ---
 
+> the task of learning a language should focus on mastering the native and
+> natural styles for that language - not on understanding of every little detail
+> of every language feature -- Bjarne Stroustrup
+
 ### Introduction
 
 Reader of any technical book has to:
