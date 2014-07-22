@@ -2,6 +2,7 @@
 title: Introduction to C++11
 categories: notes
 chapter: 1
+layout: post
 tags: lvalue rvalue
 ---
 

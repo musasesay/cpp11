@@ -2,6 +2,7 @@
 title: Procedural Programming
 categories: notes
 chapter: 2
+layout: post
 tags: constexpr range-for-statement immutability
 ---
 
