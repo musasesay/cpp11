@@ -2,6 +2,7 @@
 title: User-Defined Types
 categories: notes
 chapter: 2
+layout: post
 tags: new enum declaration interface definition implementation precondition
       invariant
 ---
