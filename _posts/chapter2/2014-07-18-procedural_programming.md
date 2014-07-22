@@ -3,7 +3,7 @@ title: Procedural Programming
 categories: notes
 chapter: 2
 layout: post
-tags: constexpr range-for-statement immutability
+tags: constexpr range-for-statement immutability declaration auto nullptr
 ---
 
 * `vim` > source | `compile` > object | `link` > executable
@@ -61,3 +61,9 @@ int f = square(b);  // ok
 
 * `nullptr` is a pointer to nothing (there is only one `nullptr` shared among
   all pointers)
+
+```c++
+int *a {nullptr};
+int *b {nullptr};
+bool c = a == b;  // true
+```
