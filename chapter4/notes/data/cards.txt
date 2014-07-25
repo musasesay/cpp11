@@ -1,0 +1,3 @@
+{   "Nike Tyson", 3000, 250, VISA }
+{"Mike Russel",10000,1320,AMEX}
+{"Peter Pan", 5000,3050,MASTER}
