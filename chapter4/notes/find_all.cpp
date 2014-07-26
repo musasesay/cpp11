@@ -27,34 +27,44 @@ using TResults = list<TConstIterator<C>>;
 template<class T>
 struct TCmp {
     virtual ~TCmp() {}
-    virtual bool operator()(const T& l, const T& r) const = 0;
+    virtual bool operator()(const T&) const = 0;
 };
 
 template<class T>
 struct TEqual : TCmp<T> {
-    virtual bool operator()(const T& l, const T& r) const {
-        return l == r;
+    TEqual(const T& val)
+        : Value(val)
+    {}
+    virtual bool operator()(const T& val) const {
+        return val == Value;
     }
+private:
+    const T& Value;
 };
 
 
 struct TCaseNonSensitiveEqual : TCmp<char> {
-    TCaseNonSensitiveEqual(const char& right)
-        : RIGHT(tolower(right))
+    TCaseNonSensitiveEqual(const char& value)
+        : VALUE(tolower(value))
     {}
 
-    virtual bool operator()(const char& l, const char& r) const {
-        return tolower(l) == RIGHT;
+    virtual bool operator()(const char& val) const {
+        return tolower(val) == VALUE;
     }
 private:
-    const char RIGHT;
+    const char VALUE;
 };
 
 template<class C>
-TResults<C> FindAll(const C& col, const TValue<C>& value, const TCmp<TValue<C>>& cmp=TEqual<TValue<C>>{}) {
+TResults<C> FindAll(const C& col, const TValue<C>& value) {
+    return FindAll(col, TEqual<TValue<C>>{value});
+}
+
+template<class C>
+TResults<C> FindAll(const C& col, const TCmp<TValue<C>>& cmp=TEqual<TValue<C>>{}) {
     TResults<C> result;
     for(TConstIterator<C> iter {col.begin()}; col.end() != iter; ++iter) {
-        if (cmp(*iter, value)) {
+        if (cmp(*iter)) {
             result.push_back(iter);
         }
     }
@@ -117,6 +127,7 @@ try
         }
         str += argv[i];
     }
+    cout << "-- Case Sensitive Search" << endl;
     for(const auto& ch : str) {
         if (iscntrl(ch) or isspace(ch)) {
             continue;
@@ -126,7 +137,21 @@ try
         } else {
             cout << '[' << ch << "] ";
         }
-        Print(FindAll(str, ch, TCaseNonSensitiveEqual{ch}), str, 4);
+        const auto result = FindAll(str, ch);
+        Print(result, str, 4);
+    }
+    cout << "-- Case non-Sensitive Search" << endl;
+    for(const auto& ch : str) {
+        if (iscntrl(ch) or isspace(ch)) {
+            continue;
+        }
+        if (IS_TTY) {
+            cout << "[\033[0;35m" << ch << "\033[0m] ";
+        } else {
+            cout << '[' << ch << "] ";
+        }
+        const auto result = FindAll(str, TCaseNonSensitiveEqual{ch});
+        Print(result, str, 4);
     }
     return 0;
 } catch(const runtime_error& err) {
