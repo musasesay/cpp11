@@ -31,7 +31,7 @@ try {
     ostream_iterator<string> oi {cout, "\n"};
     copy(data.begin(), data.end(), oi);
 
-    return 0;
+    return !is.eof();
 } catch(const exception &err) {
     if (isatty(fileno(stderr))) {
         cerr << "\033[0;31merror\033[0m: ";
