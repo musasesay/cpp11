@@ -130,7 +130,7 @@ try
     }
     return 0;
 } catch(const runtime_error& err) {
-    if (IS_TTY) {
+    if (isatty(fileno(stderr))) {
         cout << "\033[0;31merror\033[0m: ";
     } else {
         cout << "error: ";
