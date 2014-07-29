@@ -3,7 +3,7 @@ title: Concurrency and Utilities
 categories: notes
 layout: post
 chapter: 5
-tags: resource unique_ptr shared_ptr task thread process
+tags: resource unique_ptr shared_ptr task thread process mutex unique_lock lock
 ---
 
 * a *resource* is something that must be acquired and later released, e.g.
@@ -59,4 +59,41 @@ int result;
 thread t {Sum, input, result};
 t.wait();
 cout << result << endl;
+```
+
+* a *mutex* is a *mutual exclusion object*
+
+* use *unique_lock* to acquire unique lock on mutex (only one thread owns mutex
+  at a given time)
+
+* use `lock(...)` function to acquire several mutexes: it prevents a dead lock
+
+```c++
+void f() {
+    unique_loc<mutex> l1 {m1, defer_lock};  // do not lock yet
+    unique_loc<mutex> l2 {m2, defer_lock};
+    lock(l1, l2);  // will only proceed when all mutexes are acquired
+}
+```
+
+* locking and unlocking are relatively expensive operations
+
+* `condition_variable` allows to synchronize threads: consumer acquires mutex and
+  waits for a condition variable event by passing lock to it while producer
+  acquires the same mutex and then asks the condition variable to notify
+  consumer(s), e.g.:
+
+```c++
+mutex TheMutex;
+condition_variable Condition;
+void Consumer() {
+    unique_lock<mutex> lock {TheMutex};  // acquire mutex
+    while(Condition.wait(lock)) {
+    }  // release mutex and wait for a notification
+    // mutex is acquired again
+}
+void Producer() {
+    unique_lock<mutex> lock {TheMutex};
+    Condition.notify_one();  // send a notification event
+}
 ```
