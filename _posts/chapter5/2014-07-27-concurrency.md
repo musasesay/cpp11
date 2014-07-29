@@ -4,6 +4,7 @@ categories: notes
 layout: post
 chapter: 5
 tags: resource unique_ptr shared_ptr task thread process mutex unique_lock lock
+      future promise packaged_task async
 ---
 
 * a *resource* is something that must be acquired and later released, e.g.
@@ -96,4 +97,56 @@ void Producer() {
     unique_lock<mutex> lock {TheMutex};
     Condition.notify_one();  // send a notification event
 }
+```
+
+* use `promise` and `future` to send and retrieve a value or exception between
+  threads, e.g.:
+
+```c++
+promise<int> p;
+future<int> f {p.get_future()};
+void Consumer() {
+    try {
+        auto x = f.get();
+        // use x - future can be used only once (!)
+    } catch(...) {
+        // future may also deliver an exception
+    }
+}
+void Producer() {
+    p.set_value(1000);
+}
+```
+
+* `future` becomes invalid once the value is delivered
+
+* instead of manipulating `promise` and `future` it is possible to wrap a task
+  into a `packaged_task` and use associated future to retrieve result:
+
+```c++
+int Sum(const vector<int>& data) { 
+    return accumulate(data.begin(), data.end(), 0);
+}
+using TTask = int (vector<int>);
+packaged_task<TTask> t1 {&Sum};  // there only move constructor
+packaged_task<TTask> t2 {&Sum};
+future<int> f1 {t1.get_future()};
+future<int> f2 {t2.get_future()};
+thread threads [] {
+    thread {move(t1), vector1},
+    thread {move(t2), vector2}
+};
+int result {f1.get() + f2.get()};
+for(auto& t : threads) {
+    t.join();  // it is important to let threads finish
+}
+```
+
+* `async` hides any use of `mutex`, `lock`, `future` or any other thread related
+  objects and lets concentrate on the code
+
+```c++
+auto f1 = async(Sum, vector1);
+auto f2 = async(Sum, vector2);
+auto result = f1.() * f2();
 ```
