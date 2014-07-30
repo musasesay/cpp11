@@ -1,5 +1,5 @@
 ---
-title: Concurrency and Utilities
+title: Concurrency
 categories: notes
 layout: post
 chapter: 5
