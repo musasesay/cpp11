@@ -5,14 +5,18 @@ author: Samvel Khalatyan
 title: C++11
 description: Notes and Exercises for The C++ Programming Language 4th ed
 
+baseurl: /cpp11
+chapters: 44
+
 category_list:
   - name: notes
     description: chapter notes
   - name: exercises
     description: exercises for chapters
 
-chapters: 44
+include: ['_pages']
 
+relative_permalinks: false
 defaults:
   - scope:
         path: ""
@@ -20,10 +24,12 @@ defaults:
     values:
         layout: post
 
-baseurl: /cpp11
 markdown: redcarpet
 redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
-
-include: ['_pages']
-relative_permalinks: false
+  extensions:
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - autolink
+    - strikethrough
+    - superscript
+    - tables
