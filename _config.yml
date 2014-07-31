@@ -17,12 +17,6 @@ category_list:
 include: ['_pages']
 
 relative_permalinks: false
-defaults:
-  - scope:
-        path: ""
-        type: post
-    values:
-        layout: post
 
 markdown: redcarpet
 redcarpet:
