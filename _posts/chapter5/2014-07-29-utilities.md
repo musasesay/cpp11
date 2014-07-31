@@ -1,7 +1,6 @@
 ---
 title: Utilities
 categories: notes
-layout: post
 chapter: 5
 tags:
   - duration_cast
