@@ -6,14 +6,14 @@ using namespace std;
 
 struct TBadAlignment {
     char a;
-    int *p;
+    int* p;
     char c;
     int e;
     short d;
 } Data1;
 
 struct TGoodAlignment {
-    int *p;
+    int* p;
     int e;
     short d;
     char a;
@@ -37,6 +37,11 @@ void Compare(const T1& obj1, const T2& obj2) {
 }
 
 int main(int, char* []) {
+    cout << "---" << endl;
+    cout << " char: " << sizeof(char) << endl;
+    cout << "  int: " << sizeof(int) << endl;
+    cout << "short: " << sizeof(short) << endl;
+    cout << " int*: " << sizeof(int*) << endl;
     Compare(Data1, Data2);
     return 0;
 }
