@@ -6,7 +6,7 @@
 
 1. `char ch {'ac'};`
 
-1. what if address is too long?
+1. what if the address is too long?
 
 ```
 int *a {0x123456};
