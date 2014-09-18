@@ -9,3 +9,5 @@
 * `int a[] {1, 2, 3}; a[10] = 0;`
 
 * `int* a {0x654321}; *a += 1;`: access random address
+
+* `int* b {nullptr}; int c {*b};`: dereference `nullptr`
